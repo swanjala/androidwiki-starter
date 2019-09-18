@@ -5,6 +5,7 @@ import com.raywenderlich.android.droidwiki.utils.Const
 import dagger.Module
 import dagger.Provides
 import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import javax.inject.Named
 import javax.inject.Singleton
@@ -26,10 +27,10 @@ class NetworkModule{
     @Provides
     @Singleton
     fun provideRequestBuilder(@Named(NAME_BASE_URL) baseUrl:String) =
-            HttpUrl.parse(baseUrl)?.newBuilder()
+            baseUrl.toHttpUrlOrNull()?.newBuilder()
 
     @Provides
     @Singleton
     fun provideWikiApi(client: OkHttpClient, requestBuilder:HttpUrl.Builder?) =
-            WikiApi(client, requestBuilder)
+            WikiApi(client, requestBuilder!!)
 }
