@@ -41,13 +41,12 @@ import okhttp3.Response
 import java.io.IOException
 import javax.inject.Inject
 
-class EntryPresenterImpl @Inject constructor(private val homepage: Homepage) : EntryPresenter {
+class EntryPresenterImpl @Inject constructor(private val wiki:Wiki) : EntryPresenter {
 
   private lateinit var entryView: EntryView
 
   private val client: OkHttpClient = OkHttpClient()
   private val api: WikiApi = WikiApi(client)
-  private val wiki: Wiki = Wiki(api)
 
   override fun setView(entryView: EntryView) {
     this.entryView = entryView
