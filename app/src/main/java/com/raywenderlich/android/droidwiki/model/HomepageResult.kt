@@ -38,7 +38,7 @@ data class HomepageResult(private val response: Response) {
   var homepage: WikiHomepage? = null
 
   init {
-    homepage = response.body()?.string()?.let {
+    homepage = response.body?.string()?.let {
       JSONObject(it)
           .getJSONObject("parse")
           .getJSONObject("text")
