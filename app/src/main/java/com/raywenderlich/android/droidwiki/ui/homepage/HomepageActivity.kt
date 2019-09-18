@@ -43,10 +43,12 @@ import com.raywenderlich.android.droidwiki.utils.parseHtml
 import kotlinx.android.synthetic.main.activity_homepage.*
 import com.raywenderlich.android.droidwiki.ui.search.SearchActivity
 import com.raywenderlich.android.droidwiki.utils.errorDialog
+import javax.inject.Inject
 
 class HomepageActivity : Activity(), HomepageView {
 
-  private val presenter: HomepagePresenter = HomepagePresenterImpl()
+
+  @Inject lateinit var presenter:HomepagePresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
