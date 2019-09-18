@@ -40,7 +40,7 @@ import okhttp3.Response
 import java.io.IOException
 import javax.inject.Inject
 
-class HomepagePresenterImpl @Inject constructor(private val homepage:HomePage): HomepagePresenter {
+class HomepagePresenterImpl @Inject constructor(private val homepage:Homepage): HomepagePresenter {
 
   private lateinit var homepageView: HomepageView
 
@@ -51,24 +51,24 @@ class HomepagePresenterImpl @Inject constructor(private val homepage:HomePage): 
   override fun loadHomepage() {
     homepageView.displayLoading()
     homepage.get().enqueue(object : Callback {
-      override fun onResponse(call: Call?, response: Response?) {
+      override fun onResponse(call: Call, response: Response) {
         homepageView.dismissLoading()
         if (response?.isSuccessful == true) {
           response.let {
             HomepageResult(it).homepage?.let {
               homepageView.displayHomepage(it)
             } ?: run {
-              homepageView.displayError(response.message())
+              homepageView.displayError(response.message)
             }
           }
         } else {
-          homepageView.displayError(response?.message())
+          homepageView.displayError(response?.message)
         }
       }
 
-      override fun onFailure(call: Call?, t: IOException?) {
-        homepageView.displayError(t?.message)
-        t?.printStackTrace()
+      override fun onFailure(call: Call, e: IOException) {
+        homepageView.displayError(e?.message)
+        e?.printStackTrace()
       }
     })
   }
