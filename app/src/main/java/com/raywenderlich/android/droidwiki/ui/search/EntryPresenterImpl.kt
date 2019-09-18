@@ -45,9 +45,6 @@ class EntryPresenterImpl @Inject constructor(private val wiki:Wiki) : EntryPrese
 
   private lateinit var entryView: EntryView
 
-  private val client: OkHttpClient = OkHttpClient()
-  private val api: WikiApi = WikiApi(client)
-
   override fun setView(entryView: EntryView) {
     this.entryView = entryView
   }

@@ -38,7 +38,7 @@ data class SearchResult(private val response: Response) {
   var list: List<Entry>? = listOf()
 
   init {
-    list = response.body()?.string()?.let {
+    list = response.body?.string()?.let {
       JSONObject(it)
           .getJSONObject("query")
           .getJSONArray("search")
