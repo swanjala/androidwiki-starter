@@ -1,5 +1,6 @@
 package com.raywenderlich.android.droidwiki.dagger
 
+import com.raywenderlich.android.droidwiki.network.Homepage
 import com.raywenderlich.android.droidwiki.network.Wiki
 import com.raywenderlich.android.droidwiki.ui.homepage.HomepagePresenter
 import com.raywenderlich.android.droidwiki.ui.homepage.HomepagePresenterImpl
@@ -13,7 +14,7 @@ import javax.inject.Singleton
 class PresenterModule{
     @Provides
     @Singleton
-    fun provideHomePagePresenter():HomepagePresenter =
+    fun provideHomePagePresenter(homepage:Homepage):HomepagePresenter =
             HomepagePresenterImpl(homepage)
 
     @Provides
