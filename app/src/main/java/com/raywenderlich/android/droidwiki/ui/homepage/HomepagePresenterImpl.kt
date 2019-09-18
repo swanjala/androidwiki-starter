@@ -44,9 +44,6 @@ class HomepagePresenterImpl @Inject constructor(private val homepage:HomePage): 
 
   private lateinit var homepageView: HomepageView
 
-  private val client: OkHttpClient = OkHttpClient()
-  private val api: WikiApi = WikiApi(client)
-
   override fun setView(homepageView: HomepageView) {
     this.homepageView = homepageView
   }
