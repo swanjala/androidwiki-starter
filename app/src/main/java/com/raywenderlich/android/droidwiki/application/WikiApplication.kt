@@ -7,12 +7,14 @@ import com.raywenderlich.android.droidwiki.dagger.DaggerAppComponent
 
 class WikiApplication : Application() {
 
-  lateinit var wikiComponent:AppComponent
+  lateinit var appComponent:AppComponent
 
 
   override fun onCreate() {
     super.onCreate()
-    wikiComponent = initDagger(this)
+   appComponent = initDagger(this)
+
+    //wikiComponent = DaggerAppComponent.create()
 
   }
 

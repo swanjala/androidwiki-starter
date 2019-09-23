@@ -24,7 +24,7 @@ class SearchActivity : Activity(), EntryView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_search)
 
-    (application as WikiApplication).wikiComponent.inject(this)
+    (application as WikiApplication).appComponent.inject(this)
     actionBar?.setHomeAsUpIndicator(R.drawable.ic_home)
     actionBar?.setDisplayHomeAsUpEnabled(true)
 

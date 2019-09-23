@@ -25,7 +25,7 @@ class HomepageActivity : Activity(), HomepageView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_homepage)
 
-    (application as WikiApplication).wikiComponent.inject(this)
+    (application as WikiApplication).appComponent.inject(this)
 
     presenter.setView(this)
     presenter.loadHomepage()
