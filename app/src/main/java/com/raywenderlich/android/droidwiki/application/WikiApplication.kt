@@ -12,9 +12,7 @@ class WikiApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
-   appComponent = initDagger(this)
-
-    //wikiComponent = DaggerAppComponent.create()
+    appComponent = initDagger(this)
 
   }
 
