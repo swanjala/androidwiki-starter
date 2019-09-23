@@ -21,7 +21,7 @@ class HomepagePresenterImpl @Inject constructor(private val homepage:Homepage): 
     homepage.get().enqueue(object : Callback {
       override fun onResponse(call: Call, response: Response) {
         homepageView.dismissLoading()
-        if (response?.isSuccessful == true) {
+        if (response.isSuccessful == true) {
           response.let {
             HomepageResult(it).homepage?.let {
               homepageView.displayHomepage(it)
@@ -30,13 +30,13 @@ class HomepagePresenterImpl @Inject constructor(private val homepage:Homepage): 
             }
           }
         } else {
-          homepageView.displayError(response?.message)
+          homepageView.displayError(response.message)
         }
       }
 
       override fun onFailure(call: Call, e: IOException) {
-        homepageView.displayError(e?.message)
-        e?.printStackTrace()
+        homepageView.displayError(e.message)
+        e.printStackTrace()
       }
     })
   }
