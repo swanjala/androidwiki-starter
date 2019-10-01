@@ -12,12 +12,11 @@ class WikiApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
-    appComponent = initDagger(this)
+    appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
+
+
 
   }
-
-  private fun initDagger(application:WikiApplication): AppComponent =
-          DaggerAppComponent.builder()
-                  .appModule(AppModule(application))
-                  .build()
 }
